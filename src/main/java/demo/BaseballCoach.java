@@ -2,6 +2,12 @@ package demo;
 
 public class BaseballCoach implements Coach {
 
+    private FortuneService fortuneService;
+
+    public BaseballCoach(FortuneService fortuneService) {
+        this.fortuneService = fortuneService;
+    }
+
     @Override
     public String getDailyWorkout() {
         return "30 min batting practice";
@@ -9,11 +15,6 @@ public class BaseballCoach implements Coach {
 
     @Override
     public String getDailyFortune() {
-        return null;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+        return fortuneService.getFortune();
     }
 }

@@ -13,14 +13,19 @@
 <!--    </bean>-->
 <!--        <bean id="myCoach"-->
 <!--            class="demo.BaseballCoach"/>-->
+<!--	<context:property-placeholder location="sport.properties"/>-->
 
-	<bean id="myRefService"
-		  class="demo.HappyFortuneService"/>
+<!--	<bean id="myFortune"-->
+<!--		  class="demo.HappyFortuneService"/>-->
 
-	<bean id="myCoach"
-          class="demo.HappyFortuneService">
-		<constructor-arg ref="myRefService"/>
-    </bean>
+<!--	<bean id="myCoach"-->
+<!--          class="demo.CricketCoach">-->
+<!--&lt;!&ndash;		<constructor-arg ref="myFortune"/>&ndash;&gt;-->
+<!--		<property name="fortuneService" ref="myFortune"/>-->
+<!--		<property name="emailAddress" value="${foo.email}"/>-->
+<!--		<property name="team" value="${foo.team}"/>-->
+<!--    </bean>-->
+
 </beans>
 
 
