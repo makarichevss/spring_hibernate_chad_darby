@@ -7,28 +7,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-
-    <!--    <bean id="myCoach"-->
-    <!--          class="demo.TrackCoach">-->
-    <!--    </bean>-->
-    <!--        <bean id="myCoach"-->
-    <!--            class="demo.BaseballCoach"/>-->
-    <!--	<context:property-placeholder location="sport.properties"/>-->
-
-    <bean id="myFortune"
-          class="demo.HappyFortuneService"/>
-
-    <bean id="customProcessor"
-          class="demo.BeanProcessor">
-    </bean>
-
-    <bean id="myCoach"
-          class="demo.TrackCoach"
-          scope="prototype"
-          init-method="doInitStuff"
-          >
-        <constructor-arg ref="myFortune"/>
-    </bean>
+    <context:component-scan base-package="demo"/>
 
 </beans>
 

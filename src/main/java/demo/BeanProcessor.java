@@ -12,12 +12,10 @@ import java.util.List;
 public class BeanProcessor implements BeanPostProcessor, BeanFactoryAware, DisposableBean {
 
     private BeanFactory beanFactory;
-
     private final List<Object> prototypeBeans = new LinkedList<>();
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-
         // after start up, keep track of the prototype scoped beans.
         // we will need to know who they are for later destruction
 
@@ -26,7 +24,6 @@ public class BeanProcessor implements BeanPostProcessor, BeanFactoryAware, Dispo
                 prototypeBeans.add(bean);
             }
         }
-
         return bean;
     }
 
@@ -38,14 +35,11 @@ public class BeanProcessor implements BeanPostProcessor, BeanFactoryAware, Dispo
 
 
     @Override
-    public void destroy() throws Exception {
-
+    public void destroy() {
         // loop through the prototype beans and call the destroy() method on each one
 
         synchronized (prototypeBeans) {
-
             for (Object bean : prototypeBeans) {
-
                 if (bean instanceof DisposableBean disposable) {
                     try {
                         disposable.destroy();
@@ -54,9 +48,7 @@ public class BeanProcessor implements BeanPostProcessor, BeanFactoryAware, Dispo
                     }
                 }
             }
-
             prototypeBeans.clear();
         }
-
     }
 }
